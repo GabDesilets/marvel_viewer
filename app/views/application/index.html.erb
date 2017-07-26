@@ -1,0 +1,29 @@
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Album example</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+        <p>
+          <a href="#" class="btn btn-primary">Main call to action</a>
+          <a href="#" class="btn btn-secondary">Secondary action</a>
+        </p>
+      </div>
+    </section>
+    <div id="content">
+    <h2>Characters</h2>
+
+    <div id="characters" class="results">
+
+        <% heroes.each do |hero| %>
+          <article class="card">
+            <img src="<%= hero["thumbnail"]["path"] %>/portrait_incredible.jpg" alt="<%= hero["name"] %> thumbnail">
+            <footer>
+              <h5>
+                  <%= link_to hero["name"], controller: "application", action: "show", name: hero["name"] %>
+              </h5>
+            </footer>
+          </article>
+        <% end %>
+
+    </div>
+</div>

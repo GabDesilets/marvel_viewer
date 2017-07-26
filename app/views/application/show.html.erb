@@ -1,0 +1,63 @@
+
+<div class="container center">
+    <img src="<%= hero["thumbnail"]["path"] %>.jpg" alt="<%= hero["name"] %>" class="img-fluid mx-auto d-block" style="max-width: 100%;height:auto">
+</div>
+
+<div class="row-item-text title-section">
+        <div class="videobtn">
+        </div>
+        <div class="box-inline1">
+             <h1 class="featured-item-title">
+                <a class="nameTitle"><%= hero["name"] %></a>
+
+            </h1>
+        </div>
+        <h4 class="featured-item-subtitle">Character Info</h4>
+        <div class="featured-item-meta">
+            <div></div>
+            <div><strong>Real Name</strong><p><%= bio.real_name %></p></div>
+            <div><strong>Height</strong> <p><%= bio.height %></p></div>
+            <div><strong>Weight</strong> <p><%= bio.weight %></p></div>
+                <div>
+                    <strong>Powers</strong>
+                    <p class="longText"><%= bio.powers %> </p>
+                </div>
+                <div>
+                    <strong>Abilities</strong>
+                    <p class="longText"><%= bio.abilities %></p>
+                </div>
+                <div>
+                    <strong>Group Affiliations </strong>
+                    <p class="longText"><%= bio.groups_aff %></p>
+                </div>
+            <div><strong>First Appearance</strong> <p class="longText"><%= bio.first_app %></p></div>
+                <div>
+                    <strong>Origin</strong>
+                    <p class="longText"><%= bio.origin %></p>
+                </div>
+
+        </div>
+        <% if wiki_url %>
+          <% powergrid.css(".ratingvalue").each_with_index do |power, idx| %>
+            <div class="row">
+              <div class="col-1"><strong><%= powergrid.css("div").css(".p-left").css("p")[idx + 1].text %></strong></div>
+              <div class="col-1 text-left"><span class="float-right"><%= "|"*$POWERGRID_MAP[powergrid.css(".ratingvalue")[idx]["style"][/\d+/].to_i] %></span></div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No powergrid available</p>
+        <% end %>
+
+
+        <% if wiki_url %>
+          <a href="<%= wiki_url["url"] %>" class="featured-item-notice primary" target="_blank">
+              <strong>Read More on the Marvel Universe Wiki</strong>
+          </a>
+        <% else %>
+          <a href="http://marvel.com/search?q=<%= hero["name"] %>" class="featured-item-notice primary" target="_blank">
+            <strong>No wiki found for <%= hero["name"]%> click here to search for more info.</strong>
+          </a>
+        <% end %>
+
+
+</div>
